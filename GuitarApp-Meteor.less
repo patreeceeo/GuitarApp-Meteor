@@ -1,0 +1,54 @@
+/* CSS declarations go here */
+
+@page-width: 50em;
+@mainbar-width: @page-width - @sidebar-width;
+@sidebar-width: 18em;
+@usercard-height: 15em;
+@usercard-width: 40em;
+@global-controls-width: 10em;
+@left-margin: 20em;
+
+#timeline-layout {
+  position: relative;
+  margin-left: @left-margin;
+
+  * {
+    border: 1px solid gray;
+  }
+
+  #sidebar {
+    position: fixed;
+    left: @left-margin;
+    top: 0;
+    width: @sidebar-width;
+  }
+
+  #banner {
+    position: fixed;
+    top: 0;
+    left: @left-margin + @sidebar-width;
+    width: @mainbar-width;
+    .usercard {
+      display: inline;
+      height: @usercard-height;
+      max-width: @usercard-width;
+    }
+    .global-controls {
+      display: inline;
+      height: @usercard-height;
+      max-width: @global-controls-width;
+    }
+  }
+
+  #timeline {
+    position: relative;
+    left: @sidebar-width;
+    top: @usercard-height;
+    max-width: @mainbar-width;
+  }
+
+}
+
+
+  
+

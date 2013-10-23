@@ -1,22 +1,44 @@
 head
-  title GuitarApp-Meteor
+  title GuitarApp!!!
 
 body
 
-template(name="home")
-  h1 Home
-  p {{greeting}}
-  input(type="button" value="Click")
+template(name="timeline-layout")
+  #timeline-layout
+    #sidebar
+      .section
+        {{yield 'heavy-rotation'}}
+      .section
+        {{yield 'next-level'}}
+      .section
+        {{yield 'demos'}}
+    #banner
+      .usercard
+        {{yield 'usercard'}}
+      .global-controls
+        {{yield 'global-controls'}}
+    #timeline
+      {{yield}}
 
 template(name="profile")
-  h1 Profile!
+  h1 profile!
 
-template(name='footer')
-  p I am footer!
+template(name="usercard")
+  h1 usercard!
 
-template(name='layout')
-  section
-    {{yield}}
-  footer
-    {{yield 'footer'}}
+template(name='timeline')
+  h3 interesting story is interesting.
+  h3 interesting story is interesting.
+  h3 interesting story is interesting.
 
+template(name='global-controls')
+  h2 global controls!
+
+template(name='heavy-rotation')
+  h2 heavy rotation!
+
+template(name='next-level')
+  h2 ready for the next level?
+
+template(name='demos')
+  h2 demos!
