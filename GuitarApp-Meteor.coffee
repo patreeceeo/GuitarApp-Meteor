@@ -1,11 +1,11 @@
 
 
-@Meteor.startup ->
-  if @Meteor.isClient
-    @Template['home'].greeting = ->
+Meteor.startup ->
+  if Meteor.isClient
+    Template['home'].greeting = ->
       "Hello there"
 
-    @Template.home?.events
+    Template.home?.events
     'click input' : ->
 
 Router.configure
