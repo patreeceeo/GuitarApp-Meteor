@@ -2,10 +2,18 @@
 
 @Meteor.startup ->
   if @Meteor.isClient
-    @Template['hello'].greeting = ->
+    @Template['home'].greeting = ->
       "Hello there"
-    @Template['chord-diagram'].greeting = ->
-      "Welcome to GuitarApp-Meteor."
 
-    @Template.hello?.events
+    @Template.home?.events
     'click input' : ->
+
+Router.configure
+  layout: 'layout'
+
+Router.map ->
+  @route 'home', 
+    path: '/'
+    renderTemplates: 
+      footer: to: 'footer'
+  @route 'profile'
