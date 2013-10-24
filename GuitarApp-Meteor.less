@@ -1,19 +1,26 @@
 /* CSS declarations go here */
-
-@page-width: 50em;
+// todo add reset script
+@page-width: 800px;
 @mainbar-width: @page-width - @sidebar-width;
-@sidebar-width: 18em;
-@usercard-height: 15em;
-@usercard-width: 40em;
-@global-controls-width: 10em;
-@left-margin: 20em;
+@sidebar-width: 160px;
+@usercard-height: 10em;
+@usercard-width: @mainbar-width - @global-controls-width;
+@global-controls-width: 160px;
+@left-margin: 200px;
+
+html, head, body, div {
+  padding: 0;
+  border: 0;
+  margin: 0;
+}
 
 #timeline-layout {
   position: relative;
   margin-left: @left-margin;
 
   * {
-    border: 1px solid gray;
+    // outline: 2px solid rgba(77,77,77,0.5);
+    background: rgba(77,77,77,0.2);
   }
 
   #sidebar {
@@ -29,13 +36,21 @@
     left: @left-margin + @sidebar-width;
     width: @mainbar-width;
     .usercard {
-      display: inline;
+      display: inline-block;
+      // position: absolute;
+      // top: 0;
+      // left: 0;
       height: @usercard-height;
+      width: @usercard-width;
       max-width: @usercard-width;
     }
     .global-controls {
-      display: inline;
+      // position: absolute;
+      // top: 0;
+      // right: 0;
+      display: inline-block;
       height: @usercard-height;
+      width: @global-controls-width;
       max-width: @global-controls-width;
     }
   }
@@ -45,6 +60,10 @@
     left: @sidebar-width;
     top: @usercard-height;
     max-width: @mainbar-width;
+    .post {
+      padding-top: 4em;
+      padding-bottom: 4em;
+    }
   }
 
 }

@@ -3,7 +3,7 @@ head
 
 body
 
-template(name="timeline-layout")
+template(name='timeline-layout')
   #timeline-layout
     #sidebar
       .section
@@ -13,23 +13,23 @@ template(name="timeline-layout")
       .section
         {{yield 'demos'}}
     #banner
-      .usercard
-        {{yield 'usercard'}}
-      .global-controls
-        {{yield 'global-controls'}}
+      <span class='usercard'>{{yield 'usercard'}}</span><span class='global-controls'>{{yield 'global-controls'}}</span>
     #timeline
       {{yield}}
 
-template(name="profile")
+template(name='profile')
   h1 profile!
 
-template(name="usercard")
+template(name='usercard')
   h1 usercard!
 
 template(name='timeline')
-  h3 interesting story is interesting.
-  h3 interesting story is interesting.
-  h3 interesting story is interesting.
+  .post
+    h3 interesting story is interesting.
+  .post
+    h3 interesting story is interesting.
+  .post
+    h3 interesting story is interesting.
 
 template(name='global-controls')
   h2 global controls!
