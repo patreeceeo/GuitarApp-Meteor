@@ -1,73 +1,129 @@
 /* CSS declarations go here */
-// todo add reset script
-@page-width: 800px;
-@mainbar-width: @page-width - @sidebar-width;
-@sidebar-width: 160px;
-@usercard-height: 10em;
-@usercard-width: @mainbar-width - @global-controls-width;
-@global-controls-width: 160px;
-@left-margin: 200px;
 
-html, head, body, div {
-  padding: 0;
-  border: 0;
-  margin: 0;
+@darkblue: #036;
+@midblue: #069;
+@lightblue: #09c;
+@seafoam: #3cc;
+@bluegreen: #066;
+@whitish: #cff;
+
+body, .darkblue {
+  background-color: @darkblue;
 }
-
-#timeline-layout {
-  position: relative;
-  margin-left: @left-margin;
-
-  * {
-    // outline: 2px solid rgba(77,77,77,0.5);
-    background: rgba(77,77,77,0.2);
-  }
-
-  #sidebar {
-    position: fixed;
-    left: @left-margin;
-    top: 0;
-    width: @sidebar-width;
-  }
-
-  #banner {
-    position: fixed;
-    top: 0;
-    left: @left-margin + @sidebar-width;
-    width: @mainbar-width;
-    .usercard {
-      display: inline-block;
-      // position: absolute;
-      // top: 0;
-      // left: 0;
-      height: @usercard-height;
-      width: @usercard-width;
-      max-width: @usercard-width;
-    }
-    .global-controls {
-      // position: absolute;
-      // top: 0;
-      // right: 0;
-      display: inline-block;
-      height: @usercard-height;
-      width: @global-controls-width;
-      max-width: @global-controls-width;
-    }
-  }
-
-  #timeline {
-    position: relative;
-    left: @sidebar-width;
-    top: @usercard-height;
-    max-width: @mainbar-width;
-    .post {
-      padding-top: 4em;
-      padding-bottom: 4em;
-    }
-  }
-
+.midblue {
+  background-color: @midblue;
+  color: @seafoam;
+}
+.lightblue {
+  background-color: @lightblue;
+  color: @midblue;
+}
+.seafoam {
+  background-color: @seafoam;
+}
+.bluegreen { 
+  background-color: @bluegreen;
+}
+.whitish {
+  background-color: @whitish;
+  color: @darkblue;
 }
 
 
+body {
+}
+
+@media (min-width: 769px) {
+  @page-width: 1024px;
+  @mainbar-width: @page-width - @sidebar-width;
+  @sidebar-width: @page-width / 3;
+  @usercard-height: 8em;
+  @usercard-width: @mainbar-width - @global-controls-width;
+  @global-controls-width: 150px;
+
+  #timeline-layout {
+    margin: 0 auto;
+    width: @page-width;
+
+    #sidebar {
+      width: @sidebar-width;
+      float: right;
+    }
+
+    #banner {
+      float: left;
+      width: @mainbar-width;
+      .usercard {
+        display: inline-block;
+        height: @usercard-height;
+        width: @usercard-width;
+        max-width: @usercard-width;
+      }
+      .global-controls {
+        display: inline-block;
+        height: @usercard-height;
+        width: @global-controls-width;
+        max-width: @global-controls-width;
+      }
+    }
+
+    #timeline {
+      max-width: @mainbar-width;
+      // margin-left: @sidebar-width;
+      padding-top: @usercard-height;
+      .post {
+        padding-top: 4em;
+        padding-bottom: 4em;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  @page-width: 640px;
+  @mainbar-width: @page-width - @sidebar-width;
+  @sidebar-width: 0px;
+  @usercard-height: 8em;
+  @usercard-width: @mainbar-width - @global-controls-width;
+  @global-controls-width: 160px;
   
+  #timeline-layout {
+    margin: 0 auto;
+    width: @page-width;
 
+    #sidebar {
+      // display: inline-block;
+      width: @sidebar-width;
+      float: left;
+    }
+
+    #banner {
+      float: right;
+      width: @mainbar-width;
+      .usercard {
+        background-color: red;
+        display: inline-block;
+        height: @usercard-height;
+        width: @usercard-width;
+        max-width: @usercard-width;
+      }
+      .global-controls {
+        background-color: magenta;
+        display: inline-block;
+        height: @usercard-height;
+        width: @global-controls-width;
+        max-width: @global-controls-width;
+      }
+    }
+
+    #timeline {
+      max-width: @mainbar-width;
+      margin-left: @sidebar-width;
+      padding-top: @usercard-height;
+      .post {
+        padding-top: 4em;
+        padding-bottom: 4em;
+      }
+    }
+  }
+}

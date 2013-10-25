@@ -4,7 +4,7 @@ head
 body
 
 template(name='timeline-layout')
-  #timeline-layout
+  #timeline-layout.midblue
     #sidebar
       .section
         {{yield 'heavy-rotation'}}
@@ -13,8 +13,8 @@ template(name='timeline-layout')
       .section
         {{yield 'demos'}}
     #banner
-      <span class='usercard'>{{yield 'usercard'}}</span><span class='global-controls'>{{yield 'global-controls'}}</span>
-    #timeline
+      <span class='usercard lightblue'>{{yield 'usercard'}}</span><span class='global-controls midblue'>{{yield 'global-controls'}}</span>
+    #timeline.whitish
       {{yield}}
 
 template(name='profile')
