@@ -5,6 +5,8 @@ body
 
 template(name='timeline-layout')
   #timeline-layout.cg1-mid
+    #banner.cg2-mid
+      <span class='usercard'>{{yield 'usercard'}}</span><span class='global-controls cg2-light'>{{yield 'global-controls'}}</span>
     #sidebar.cg1-mid
       .section
         {{yield 'heavy-rotation'}}
@@ -12,8 +14,6 @@ template(name='timeline-layout')
         {{yield 'next-level'}}
       .section
         {{yield 'demos'}}
-    #banner.cg2-mid
-      <span class='usercard'>{{yield 'usercard'}}</span><span class='global-controls cg2-light'>{{yield 'global-controls'}}</span>
     #timeline.cg1-light
       {{yield}}
 
@@ -21,7 +21,12 @@ template(name='profile')
   h1 profile!
 
 template(name='usercard')
-  h1 usercard!
+  img(src='profile.jpg')
+  .short-bio
+    h1 Mr Dylan
+    ul
+      li Teacher
+      li Student
 
 template(name='timeline')
   .post
@@ -32,7 +37,13 @@ template(name='timeline')
     h1 interesting story is interesting.
 
 template(name='global-controls')
-  h1 global controls!
+  ul
+    li 
+      a logout
+    li 
+      a settings
+    li 
+      a help
 
 template(name='heavy-rotation')
   h1 heavy rotation!

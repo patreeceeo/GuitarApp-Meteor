@@ -3,9 +3,10 @@
 @chocolate: #110700;
 @milkchocolate: lighten(desaturate(@chocolate, 70%), 20%);
 @whitish: #fdfef0;
-@grayish: darken(desaturate(@whitish, 70%), 10%);
+@grayish: darken(desaturate(@whitish, 50%), 10%);
 @pinkclay: lighten(@redclay, 20%);
-@redclay: #ba4828;
+@redclay:   #ba4828;
+@oceanblue: #345678;
 
 // Earthy/warm color scheme
 body, .cg1-dark {
@@ -22,11 +23,30 @@ body, .cg1-dark {
 .cg2-mid {
   background-color: @redclay;
   color: @whitish;
+  * {
+    border: 0px solid @whitish;
+    outline: 0px solid @whitish;
+  }
 }
 .cg2-light {
   background-color: @pinkclay;
-  color: @whitish;
+  color: @milkchocolate;
+  * {
+    border: 0px solid @whitish;
+    outline: 0px solid @whitish;
+  }
+  a {
+    &:hover {
+      background-color: @oceanblue;
+      color: @whitish;
+    }
+  }
 }
+
+.square (@size) {
+  height: @size;
+  max-width: @size;
+}  
 
 h1 {
   body & {
@@ -37,97 +57,98 @@ h1 {
   }
 }
 
-@media (min-width: 769px) {
-  @page-width: 1024px;
+a {
+  cursor: pointer;
+}
+
+@usercard-height: 8em;
+@global-controls-width: 150px;
+
+.wide-screen-layout(
+    @page-width: @wide-screen-min-width, 
+    @sidebar-width: @wide-screen-min-width / 3,
+    ) {
   @mainbar-width: @page-width - @sidebar-width;
-  @sidebar-width: @page-width / 3;
-  @usercard-height: 8em;
   @usercard-width: @mainbar-width - @global-controls-width;
-  @global-controls-width: 150px;
 
   #timeline-layout {
     margin: 0 auto;
     width: @page-width;
+  }
 
-    #sidebar {
-      width: @sidebar-width;
-      float: right;
+  #sidebar {
+    width: @sidebar-width;
+    float: right;
+    h1 {
+      font-size: 2em;
     }
+  }
 
-    #banner {
-      float: left;
-      width: @mainbar-width;
-      * {
-        vertical-align: top;
+  #banner {
+    float: left;
+    width: @mainbar-width;
+    & > * {
+      vertical-align: top;
+      display: inline-block;
+      height: @usercard-height;
+    }
+    .usercard {
+      & > * {
         display: inline-block;
-        height: @usercard-height;
+        vertical-align: top;
       }
-      .usercard {
-        width: @usercard-width;
-        max-width: @usercard-width;
+      display: inline-block;
+      img {
+        .square(@usercard-height * 1.1);
+        border-width: @usercard-height * .1;
+        margin-left: -@usercard-height * .2;
       }
-      .global-controls {
-        width: @global-controls-width;
-        max-width: @global-controls-width;
+      width: @usercard-width;
+      max-width: @usercard-width;
+    }
+    .global-controls {
+      width: @global-controls-width;
+      max-width: @global-controls-width;
+      li a {
+        list-style: none;
+        padding: 0.5em;
+        display: block;
       }
     }
+  }
 
-    #timeline {
-      max-width: @mainbar-width;
-      // margin-left: @sidebar-width;
-      padding-top: @usercard-height;
-      .post {
-        padding-top: 4em;
-        padding-bottom: 4em;
-      }
+  #timeline {
+    max-width: @mainbar-width;
+    // margin-left: @sidebar-width;
+    padding-top: @usercard-height;
+    .post {
+      padding-top: 4em;
+      padding-bottom: 4em;
     }
   }
 }
 
-@media (max-width: 768px) {
-  @page-width: 640px;
-  @mainbar-width: @page-width - @sidebar-width;
-  @sidebar-width: 0px;
-  @usercard-height: 8em;
-  @usercard-width: @mainbar-width - @global-controls-width;
-  @global-controls-width: 160px;
-  
-  #timeline-layout {
-    margin: 0 auto;
-    width: @page-width;
+@wide-screen-min-width: 1024px;
+@narrow-screen-min-width: 600px;
+@media (min-width: @wide-screen-min-width) {
+  .wide-screen-layout;
+}
 
-    #sidebar {
-      // display: inline-block;
-      width: @sidebar-width;
-      float: left;
-    }
-
-    #banner {
-      float: right;
-      width: @mainbar-width;
-      .usercard {
-        background-color: red;
-        display: inline-block;
-        height: @usercard-height;
-        width: @usercard-width;
-        max-width: @usercard-width;
-      }
-      .global-controls {
-        background-color: magenta;
-        display: inline-block;
-        height: @usercard-height;
-        width: @global-controls-width;
-        max-width: @global-controls-width;
-      }
-    }
-
-    #timeline {
-      max-width: @mainbar-width;
-      margin-left: @sidebar-width;
-      padding-top: @usercard-height;
-      .post {
-        padding-top: 4em;
-        padding-bottom: 4em;
+@media (max-width: @wide-screen-min-width) {
+  .wide-screen-layout;
+  #timeline-layout, #timeline, #banner, #sidebar {
+    width: @narrow-screen-min-width;
+  }
+  #sidebar {
+    float: none;
+  }
+  #banner {
+    .usercard {
+      width: @narrow-screen-min-width - @global-controls-width;
+      img {
+        .square(@usercard-height);
+        border: 0;
+        margin: 0;
       }
     }
   }
