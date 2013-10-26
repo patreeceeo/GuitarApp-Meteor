@@ -1,36 +1,40 @@
 /* CSS declarations go here */
 
-@darkblue: #036;
-@midblue: #069;
-@lightblue: #09c;
-@seafoam: #3cc;
-@bluegreen: #066;
-@whitish: #cff;
+@chocolate: #110700;
+@milkchocolate: lighten(desaturate(@chocolate, 70%), 20%);
+@whitish: #fdfef0;
+@grayish: darken(desaturate(@whitish, 70%), 10%);
+@pinkclay: lighten(@redclay, 20%);
+@redclay: #ba4828;
 
-body, .darkblue {
-  background-color: @darkblue;
+// Earthy/warm color scheme
+body, .cg1-dark {
+  background-color: @chocolate;
 }
-.midblue {
-  background-color: @midblue;
-  color: @seafoam;
-}
-.lightblue {
-  background-color: @lightblue;
-  color: @midblue;
-}
-.seafoam {
-  background-color: @seafoam;
-}
-.bluegreen { 
-  background-color: @bluegreen;
-}
-.whitish {
+.cg1-light {
   background-color: @whitish;
-  color: @darkblue;
+  color: @milkchocolate;
+}
+.cg1-mid {
+  background-color: @grayish;
+  color: @milkchocolate;
+}
+.cg2-mid {
+  background-color: @redclay;
+  color: @whitish;
+}
+.cg2-light {
+  background-color: @pinkclay;
+  color: @whitish;
 }
 
-
-body {
+h1 {
+  body & {
+    font-size: 100%;
+  }
+  .usercard & {
+    font-size: 2em;
+  }
 }
 
 @media (min-width: 769px) {
@@ -53,15 +57,16 @@ body {
     #banner {
       float: left;
       width: @mainbar-width;
-      .usercard {
+      * {
+        vertical-align: top;
         display: inline-block;
         height: @usercard-height;
+      }
+      .usercard {
         width: @usercard-width;
         max-width: @usercard-width;
       }
       .global-controls {
-        display: inline-block;
-        height: @usercard-height;
         width: @global-controls-width;
         max-width: @global-controls-width;
       }
