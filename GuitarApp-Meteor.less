@@ -6,7 +6,6 @@
 @grayish: darken(desaturate(@whitish, 50%), 10%);
 @pinkclay: lighten(@redclay, 20%);
 @redclay:   #ba4828;
-@oceanblue: #345678;
 
 // Earthy/warm color scheme
 body, .cg1-dark {
@@ -37,7 +36,7 @@ body, .cg1-dark {
   }
   a {
     &:hover {
-      background-color: @oceanblue;
+      background-color: @redclay;
       color: @whitish;
     }
   }
@@ -55,10 +54,23 @@ h1 {
   .usercard & {
     font-size: 2em;
   }
+  .post & {
+    font-size: 1.5em;
+  }
+  #sidebar & {
+    font-size: 1.5em;
+    font-weight: bold;
+    // color: @whitish;
+    background-color: @whitish;
+    &:before {
+      content: '///';
+    }
+  }
 }
 
 a {
   cursor: pointer;
+  color: inherit;
 }
 
 @usercard-height: 8em;
@@ -79,8 +91,20 @@ a {
   #sidebar {
     width: @sidebar-width;
     float: right;
+    a, h1 {
+      font-size: 1.5em;
+      text-decoration: none;
+      padding: 0.25em 10px 0.25em 10px;
+      display: block;
+    }
     h1 {
-      font-size: 2em;
+      padding-left: 0;
+    }
+    a {
+      &:hover {
+        background-color: @milkchocolate;
+        color: @whitish;
+      }
     }
   }
 
@@ -109,21 +133,39 @@ a {
     .global-controls {
       width: @global-controls-width;
       max-width: @global-controls-width;
+      position: relative;
+      img {
+        .square(1.5em);
+        position: absolute;
+        right: 10px;
+        top: -0.1em;
+      }
       li a {
-        list-style: none;
-        padding: 0.5em;
+        padding: 0.25em 10px 0.25em 10px;
         display: block;
+        font-size: 1.5em;
+        text-align: right;
       }
     }
   }
 
   #timeline {
     max-width: @mainbar-width;
-    // margin-left: @sidebar-width;
-    padding-top: @usercard-height;
+    padding-top: @usercard-height * 1.2;
     .post {
-      padding-top: 4em;
-      padding-bottom: 4em;
+      padding: 1em 0 1em 0;
+      & > * {
+        display: inline-block;
+      }
+      img, p {
+        padding: 0 1em 0 1em;
+      }
+      p {
+        display: block;
+      }
+      img {
+        .square(4em)
+      }
     }
   }
 }
@@ -137,7 +179,11 @@ a {
 @media (max-width: @wide-screen-min-width) {
   .wide-screen-layout;
   #timeline-layout, #timeline, #banner, #sidebar {
+    max-width: @narrow-screen-min-width;
     width: @narrow-screen-min-width;
+  }
+  #timeline {
+    padding-top: 0;
   }
   #sidebar {
     float: none;

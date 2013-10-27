@@ -30,10 +30,10 @@ template(name='usercard')
 
 template(name='timeline')
   .post
+    img(src='profile.jpg')
     h1 interesting story is interesting.
   .post
-    h1 interesting story is interesting.
-  .post
+    img(src='profile.jpg')
     h1 interesting story is interesting.
 
 template(name='global-controls')
@@ -47,9 +47,24 @@ template(name='global-controls')
 
 template(name='heavy-rotation')
   h1 heavy rotation!
+  ul
+    li 
+      a Song 1
+    li 
+      a Song 2
+    li 
+      a Exercise 3
 
 template(name='next-level')
   h1 ready for the next level?
+  ul
+    li
+      a(href='javascript: void 0;') Try Song 3!
 
 template(name='demos')
   h1 demos!
+  ul
+    li 
+      a Fillmore Jive
+    li 
+      a Dazed and Confused
