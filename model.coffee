@@ -28,9 +28,7 @@ Meteor.methods
   'profile/create': (options) ->
     # check(options);
 
-    id = options._id or Profiles.length
     Profiles.insert
-      _id: id
-      owner: this.userId
-    id
+      owner: @userId
+      imageURL: 'profile.jpg' or options.imageURL
 
